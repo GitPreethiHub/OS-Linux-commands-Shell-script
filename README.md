@@ -24,43 +24,55 @@ Testing the commands for the desired output.
 ### Create the following files file1, file2 as follows:
 cat > file1
 ```
-chanchal singhvi
-c.k. shukla
-s.n. dasgupta
-sumit chakrobarty
-^d
+this is os class
+linux with wsl
 ```
 cat > file2
 ```
-anil aggarwal
-barun sengupta
-c.k. shukla
-lalit chowdury
-s.n. dasgupta
-^d
+operating system
+linux commands
 ```
 ### Display the content of the files
 cat < file1
 ## OUTPUT
-
-
+this is os class
+linux with ws
 
 cat < file2
 ## OUTPUT
-
-
+```
+operating system
+linux commands
+```
 # Comparing Files
 cmp file1 file2
 ## OUTPUT
- 
+```
+file1 file2 differ: byte 1, line 1
+```
 comm file1 file2
  ## OUTPUT
-
- 
+```
+operating system
+comm: file 2 is not in sorted order
+        linux commands
+this is os class
+comm: file 1 is not in sorted order
+linux with wsl
+comm: input is not in sorted order
+``` 
 diff file1 file2
 ## OUTPUT
-
-
+```
+1,2c1,2
+< this is os class
+< linux with wsl
+\ No newline at end of file
+---
+> operating system
+> linux commands
+\ No newline at end of file
+```
 #Filters
 
 ### Create the following files file11, file22 as follows:
@@ -82,19 +94,24 @@ cat > file22
 
 cut -c1-3 file11
 ## OUTPUT
-
-
-
-
+```
+Hel
+Thi
+```
 cut -d "|" -f 1 file22
 ## OUTPUT
-
-
-
+```
+1001
+1002
+1003
+```
 cut -d "|" -f 2 file22
 ## OUTPUT
-
-
+```
+ Ram
+ tom
+ Joe
+```
 cat < newfile 
 ```
 Hello world
@@ -107,41 +124,45 @@ hello world
  
 grep Hello newfile 
 ## OUTPUT
-
-
-
+```
+Hello world
+```
 grep hello newfile 
 ## OUTPUT
-
-
-
-
+```
+hello world
+```
 grep -v hello newfile 
 ## OUTPUT
-
-
-
+```
+Hello world
+```
 cat newfile | grep -i "hello"
 ## OUTPUT
-
-
-
-
+```
+Hello world
+hello world
+```
 cat newfile | grep -i -c "hello"
 ## OUTPUT
-
-
-
-
+```
+2
+```
 grep -R ubuntu /etc
 ## OUTPUT
-
-
-
+```
+/etc/os-release:ID=ubuntu
+/etc/os-release:HOME_URL="https://www.ubuntu.com/"
+/etc/os-release:SUPPORT_URL="https://help.ubuntu.com/"
+/etc/os-release:BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+/etc/os-release:PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+```
 grep -w -n world newfile   
 ## OUTPUT
-
-
+```
+1:Hello world
+2:hello world
+```
 cat < newfile 
 ```
 Hello world
