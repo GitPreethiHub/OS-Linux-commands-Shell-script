@@ -431,14 +431,27 @@ cat > file22
 ``` 
 uniq file22
 ## OUTPUT
-
-
-
+```
+1001 | Ram | 10000 | HR
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
+1005 | Sam |  5000 | HR
+1004 | Sit |  7000 | Dev
+```
 #Using tr command
 
 cat file23 | tr [:lower:] [:upper:]
  ## OUTPUT
-
+```
+1001 | RAM | 10000 | HR
+1001 | RAM | 10000 | HR
+1002 | TOM |  5000 | ADMIN
+1003 | JOE |  7000 | DEVELOPER
+1005 | SAM |  5000 | HR
+1004 | SIT |  7000 | DEV
+1003 | JOE |  7000 | DEVELOPER
+1001 | RAM | 10000 | HR
+```
 cat < urllist.txt
 ```
 www. yahoo. com
@@ -454,39 +467,71 @@ www. mrcet.... com
  ```
 cat urllist.txt | tr -d ' '
  ## OUTPUT
-
-
- 
+```
+www.yahoo.com
+www.google.com
+www.mrcet....com
+``` 
 cat urllist.txt | tr -d ' ' | tr -s '.'
 ## OUTPUT
-
-
-
+```
+www.yahoo.com
+www.google.com
+www.mrcet.com
+```
 #Backup commands
 tar -cvf backup.tar *
 ## OUTPUT
-
-
+```
+file1
+file11
+file2
+file21
+file22
+file23
+newfile
+urllist.txt
+```
 mkdir backupdir
  
 mv backup.tar backupdir
  
-tar -tvf backup.tar
+tar -tvf backupdir/backup.tar
 ## OUTPUT
-
-
-tar -xvf backup.tar
+```
+-rw-r--r-- ezlian/ezlian    31 2024-02-09 16:02 file1
+-rw-r--r-- ezlian/ezlian    28 2024-02-09 16:11 file11
+-rw-r--r-- ezlian/ezlian    31 2024-02-09 16:06 file2
+-rw-r--r-- ezlian/ezlian   130 2024-02-16 16:24 file21
+-rw-r--r-- ezlian/ezlian   154 2024-02-16 16:25 file22
+-rw-r--r-- ezlian/ezlian   209 2024-02-16 15:39 file23
+-rw-r--r-- ezlian/ezlian    95 2024-02-15 09:44 newfile
+-rw-r--r-- ezlian/ezlian    51 2024-02-22 09:09 urllist.txt
+```
+tar -xvf backupdir/backup.tar
 ## OUTPUT
-
+```
+file1
+file11
+file2
+file21
+file22
+file23
+newfile
+urllist.txt
+```
 gzip backup.tar
 
 ls .gz
 ## OUTPUT
- 
+ ```
+backup.tar.gz
+```
 gunzip backup.tar.gz
 ## OUTPUT
-
- 
+```
+backup.tar
+``` 
 # Shell Script
 ```
 echo '#!/bin/sh' > my-script.sh
