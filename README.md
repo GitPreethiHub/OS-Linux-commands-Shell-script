@@ -593,22 +593,45 @@ ps
  
 chmod 777 scriptest.sh
  
-./scriptest.sh 1 2 3
+./scriptest.sh 1 2 3 4
 
 ## OUTPUT
-
+```
+“File name is ./scriptest.sh ”
+File name is  scriptest.sh
+“First arg. is ” 1
+“Second arg. is ” 2
+“Third arg. is ” 3
+“Fourth arg. is ”
+The $@ is  1 2 3
+The $# is  3
+The $$ is  622
+    PID TTY          TIME CMD
+    365 pts/0    00:00:00 bash
+    596 pts/0    00:00:00 bash
+    597 pts/0    00:00:00 bash
+    622 pts/0    00:00:00 scriptest.sh
+    624 pts/0    00:00:00 ps
+```
  
 ls file1
 ## OUTPUT
-
+```
+file1
+```
 echo $?
 ## OUTPUT 
+```
+0
+```
 ./one
 bash: ./one: Permission denied
  
 echo $?
 ## OUTPUT 
- 
+ ```
+127
+```
 abcd
  
 echo $?
