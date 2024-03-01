@@ -90,8 +90,6 @@ cat > file22
 1003 | Joe |  7000 | Developer
 ^d
 ```
-
-
 cut -c1-3 file11
 ## OUTPUT
 ```
@@ -636,11 +634,10 @@ abcd
  
 echo $?
  ## OUTPUT
-
-
- 
+```
+127
+``` 
 # mis-using string comparisons
-
 cat < strcomp.sh 
 ```bash
 \#!/bin/bash
@@ -667,16 +664,13 @@ else
 echo "$val1 is less than $val2"
 fi
 ```
-##OUTPUT
-
-
-
 chmod 755 strcomp.sh
  
 ./strcomp.sh 
 ## OUTPUT
-
-
+```
+baseball is less than hockey
+```
 # check file ownership
 cat < psswdperm.sh 
 ```bash
@@ -695,14 +689,16 @@ cat psswdperm.sh
 /#!/bin/bash
 if [ -O /etc/passwd ]
 then
-echo “You are the owner of the /etc/passwd file”
+echo 'You are the owner of the /etc/passwd file'
 else
-echo “Sorry, you are not the owner of the /etc/passwd file”
+echo 'Sorry, you are not the owner of the /etc/passwd file'
 fi
  ```
 ./psswdperm.sh
 ## OUTPUT
-
+```
+Sorry, you are not the owner of the /etc/passwd file
+```
 # check if with file location
 cat>ifnested.sh 
 ```bash
@@ -748,9 +744,11 @@ fi
 
 ./ifnested.sh 
 ## OUTPUT
-
-
-
+```
+$HOME The object exists, is it a file?
+No,$HOME it is not a file!
+But /home/ezlian/.bash_history is a file!
+```
 # using numeric test comparisons
 cat > iftest.sh 
 ```bash
@@ -846,7 +844,7 @@ $ ./ifnested.sh
 cat elifcheck.sh 
 ```bash
 \#!/bin/bash
-if [ $USER = Ram ]
+if [ $USER = ezlian ]
 then
 echo "Welcome $USER"
 echo "Please enjoy your visit"
@@ -869,8 +867,10 @@ $ chmod 755 elifcheck.sh
  
 $ ./elifcheck.sh 
 ## OUTPUT
-
-
+```
+Welcome ezlian
+Please enjoy your visit
+```
 # testing compound comparisons
 cat> ifcompound.sh 
 ```bash
@@ -885,12 +885,15 @@ fi
 $ chmod 755 ifcompound.sh
 $ ./ifcompound.sh 
 ## OUTPUT
-
+```
+The file exists and you can write to it
+```
 # using the case command
 cat >casecheck.sh 
 ```bash
+#!/bin/bash
 case $USER in
-Ram | Robert)
+ezlian | Nyrael)
 echo "Welcome, $USER"
 echo "Please enjoy your visit";;
 Rahim)
@@ -904,11 +907,15 @@ esac
 $ chmod 755 casecheck.sh 
  
 $ ./casecheck.sh 
- 
+## OUTPUT
+```
+Welcome, ezlian
+Please enjoy your visit
+```
+# while command test
 cat > whiletest
 ```bash
 #!/bin/bash
-#while command test
 var1=10
 while [ $var1 -gt 0 ]
 do
@@ -919,11 +926,23 @@ done
 $ chmod 755 whiletest.sh
  
 $ ./whiletest.sh
- 
- 
-cat untiltest.sh 
+## OUTPUT
+```
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+```
+# using the until command
+cat > untiltest.sh 
 ```bash
-\#using the until command
+#!/bin/bash
 var1=100
 until [ $var1 -eq 0 ]
 do
@@ -932,13 +951,18 @@ var1=$[ $var1 - 25 ]
 done
 ``` 
 $ chmod 755 untiltest.sh
- 
- 
- 
+./untiltest.sh
+## OUTPUT
+```
+100
+75
+50
+25
+```
+# basic for command
 cat forin1.sh 
 ```bash
 \#!/bin/bash
-\#basic for command
 for test in Alabama Alaska Arizona Arkansas California Colorado
 do
 echo The next state is $test
@@ -946,31 +970,27 @@ done
  ```
  
 $ chmod 755 forin1.sh
+$ ./forin1.sh
+## OUTPUT
+```
+The next state is Alabama
+The next state is Alaska
+The next state is Arizona
+The next state is Arkansas
+The next state is California
+The next state is Colorado
+```
  
- 
-cat forin2.sh 
+# another example of how not to use the for command 
+cat > forin2.sh 
 ```bash
 \#!/bin/bash
-\# another example of how not to use the for command
 for test in I don't know if this'll work
 do
 echo “word:$test”
 done
  ```
- 
-$ chmod 755 forin2.sh
- 
-cat forin2.sh 
-```bash
-\#!/bin/bash
-\# another example of how not to use the for command
-for test in I don't know if this'll work
-do
-echo “word:$test”
-done
-```
-$ chmod 755 forin2.sh
- 
+$ chmod 755 forin2.sh 
 $ ./forin2.sh 
  
 cat forin3.sh 
