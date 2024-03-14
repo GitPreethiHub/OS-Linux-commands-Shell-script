@@ -789,7 +789,11 @@ fi
 $ chmod 755 iftest.sh
  
 $ ./iftest.sh 
-##OUTPUT
+## OUTPUT
+```
+“The test value 10 is greater than 5”
+“The values are different"
+```
 
 # check if a file
 cat > ifnested.sh 
@@ -838,7 +842,12 @@ fi
 $ chmod 755 ifnested.sh
  
 $ ./ifnested.sh 
-##OUTPUT
+## OUTPUT
+```
+“/home/ezlian The object exists, is it a file?”
+“No,/home/ezlian it is not a file!”
+“But /home/ezlian/.bash_history is a file!”
+```
 
 # looking for a possible value using elif
 cat elifcheck.sh 
@@ -992,6 +1001,13 @@ done
  ```
 $ chmod 755 forin2.sh 
 $ ./forin2.sh 
+
+## OUTPUT:
+```
+“word:I”
+“word:dont know if thisll”
+“word:work”
+```
  
 cat forin3.sh 
 ```bash
