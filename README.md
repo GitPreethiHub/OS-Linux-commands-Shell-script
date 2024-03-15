@@ -1008,42 +1008,29 @@ $ ./forin2.sh
 “word:dont know if thisll”
 “word:work”
 ```
- 
+# another example of how not to use the for command 
 cat forin3.sh 
 ```bash
 \#!/bin/bash
-\# another example of how not to use the for command
 for test in I don\'t know if "this'll" work
 do
 echo "word:$test"
 done
 ```
+$ chmod 755 forin3.sh 
 $ ./forin3.sh 
- 
-cat forin1.sh 
-```bash
-#!/bin/bash
-# basic for command
-for test in Alabama Alaska Arizona Arkansas California Colorado
-do
-echo The next state is $test
-done
-```
-$ chmod 755 forin1.sh
 
 ## OUTPUT
-cat forinfile.sh 
-```bash
-#!/bin/bash
-# reading values from a file
-file="cities"
-for state in `cat $file`
-do
-echo "Visit beautiful $file“
-done
 ```
-$ chmod 777 forinfile.sh
-$ cat cities
+word:I
+word:don't
+word:know
+word:if
+word:this'll
+word:work
+```
+# reading values from a file
+$ cat > cities
 Hyderabad
 Alampur
 Basara
@@ -1051,14 +1038,33 @@ Warangal
 Adilabad
 Bhadrachalam
 Khammam
+$ chmod 755 cities
 
-## OUTPUT
-
-
-cat forctype.sh 
+$ cat > forinfile.sh 
 ```bash
 #!/bin/bash
+file="cities"
+for state in `cat $file`
+do
+echo "Visit beautiful $state"
+done
+```
+$ chmod 777 forinfile.sh
+$ ./forinfile.sh
+## OUTPUT
+```
+Visit beautiful Hyderabad
+Visit beautiful Alampur
+Visit beautiful Basara
+Visit beautiful Warangal
+Visit beautiful Adilabad
+Visit beautiful Bhadrachalam
+Visit beautiful Khammam
+```
 # testing the C-style for loop
+$ cat > forctype.sh 
+```bash
+#!/bin/bash
 for (( i=1; i <= 5; i++ ))
 do
 echo "The value of i is $i"
@@ -1067,8 +1073,14 @@ done
 $ chmod 755 forctype.sh
 $ ./forctype.sh 
 ## OUTPUT
-
-cat forctype1.sh 
+```
+The value of i is 1
+The value of i is 2
+The value of i is 3
+The value of i is 4
+The value of i is 5
+```
+$ cat forctype1.sh 
 ```bash
 #!/bin/bash
 # multiple variables
@@ -1077,14 +1089,20 @@ do
 echo "$a - $b"
 done
 ```
-$ chmod 755 forctype.sh
+$ chmod 755 forctype1.sh
 $ ./forctype1.sh 
 ## OUTPUT
-
-cat fornested1.sh 
+```
+1 - 5
+2 - 4
+3 - 3
+4 - 2
+5 - 1
+```
+# nesting for loops
+$ cat > fornested1.sh 
 ```bash
 #!/bin/bash
-# nesting for loops
 for (( a = 1; a <= 3; a++ ))
 do
 echo "Starting loop $a:"
@@ -1098,12 +1116,24 @@ $ chmod 755 fornested1.sh
  
 $ ./fornested1.sh 
  ## OUTPUT
-
- 
+```
+Starting loop 1:
+ Inside loop: 1
+ Inside loop: 2
+ Inside loop: 3
+Starting loop 2:
+ Inside loop: 1
+ Inside loop: 2
+ Inside loop: 3
+Starting loop 3:
+ Inside loop: 1
+ Inside loop: 2
+ Inside loop: 3
+```
+# breaking out of a for loop 
 cat forbreak.sh 
 ```bash
 #!/bin/bash
-# breaking out of a for loop
 for var1 in 1 2 3 4 5
 do
 if [ $var1 -eq 3 ]
@@ -1112,18 +1142,21 @@ break
 fi
 echo "Iteration number: $var1"
 done
-echo "The for loop is completed“
+echo "The for loop is completed"
 ```
-## OUTPUT
-
 $ chmod 755 forbreak.sh
- 
 $ ./forbreak.sh 
- 
-cat forbreak.sh 
+
+## OUTPUT
+```
+Iteration number: 1
+Iteration number: 2
+The for loop is completed
+```
+# breaking out of a for loop
+$ cat forcontinue.sh 
 ```bash
 #!/bin/bash
-# breaking out of a for loop
 for var1 in 1 2 3 4 5
 do
 if [ $var1 -eq 3 ]
@@ -1132,49 +1165,51 @@ continue
 fi
 echo "Iteration number: $var1"
 done
-echo "The for loop is completed“
-```
-
- 
-$ chmod 755 forcontinue.sh
- 
+echo "The for loop is completed"
+``` 
+$ chmod 755 forcontinue.sh 
 $ ./forcontinue.sh 
 ## OUTPUT
- 
-cat exread.sh 
+```
+Iteration number: 1
+Iteration number: 2
+Iteration number: 4
+Iteration number: 5
+The for loop is completed
+```
+# testing the read command
+$ cat > exread.sh 
 ```bash
 #!/bin/bash
-# testing the read command
 echo -n "Enter your name: "
 read name
 echo "Hello $name, welcome to my program. "
  ```
- 
 $ chmod 755 exread.sh 
- 
 $ ./exread.sh 
 ## OUTPUT
-
-
- cat exread1.sh
+```
+Enter your name: ezlian
+Hello ezlian, welcome to my program.
+```
+# testing the read command
+$ cat > exread1.sh
 ```bash
 #!/bin/bash
-# testing the read command
 read -p "Enter your name: " name
-echo "Hello $name, welcome to my program. “
+echo "Hello $name, welcome to my program. "
 ``` 
 $ chmod 755 exread1.sh 
-
+$ ./exread1.sh
 ## OUTPUT
-
-
-
-$ ./exread1.sh 
- 
-cat funcex.sh
+```
+Enter your name: ezlian
+Hello ezlian, welcome to my program.
+```
+# trying to access script parameters inside a function 
+$ cat > funcex.sh
 ```bash
 #!/bin/bash
-# trying to access script parameters inside a function
 function func {
 echo $[ $1 * $2 ]
 }
