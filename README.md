@@ -1206,10 +1206,8 @@ $ ./exread1.sh
 Enter your name: ezlian
 Hello ezlian, welcome to my program.
 ```
-# trying to access script parameters inside a function 
-$ cat > funcex.sh
-```bash
-#!/bin/bash
+# trying to access script parameters inside a function
+```
 function func {
 echo $[ $1 * $2 ]
 }
@@ -1221,11 +1219,14 @@ else
 echo "Usage: badtest1 a b"
 fi
 ```
-## OUTPUT
- ./funcex.sh 
 
- 
+ ./funcex.sh  
  ./funcex.sh 1 2
+ ## OUTPUT
+ ```
+$ bash script.sh 1 2
+The result is 2
+```
 
  
 cat argshift.sh
@@ -1240,8 +1241,12 @@ $ chmod 777 argshift.sh
 
 ## OUTPUT
 $ ./argshift.sh 1 2 3
- 
- cat argshift1.sh
+```
+1
+2
+3
+```
+  cat argshift1.sh
 ```bash
  #/bin/bash 
  # store arguments in a special array 
@@ -1257,6 +1262,11 @@ done
 $ chmod 777 argshift.sh
 ## OUTPUT
 $ ./argshift.sh 1 2 3
+```
+1
+2
+3
+```
  
 cat argshift.sh
 ```bash
@@ -1269,7 +1279,10 @@ done
 set +x
 ```
 ## OUTPUT
- ./argshift.sh 1 2 3
+```
++ (( 0 ))
++ set +x
+```
  
  
 cat > nc.awk
@@ -1301,6 +1314,11 @@ ubcdfghj
 ```
 awk -f nc.awk data.dat
 ## OUTPUT 
+```
+total characters 75
+Number of Lines are 10
+No of Words count: 10
+```
  
 cat > palindrome.sh
 ```bash
@@ -1328,6 +1346,14 @@ else
 fi
 ```
 ## OUTPUT 
+```
+Enter the number
+121
+Number is palindrome
+Enter the number
+69
+Number is NOT palindrome
+```
 
 
 # RESULT:
